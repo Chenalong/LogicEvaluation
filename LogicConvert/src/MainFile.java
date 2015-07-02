@@ -34,7 +34,8 @@ public class MainFile
 		for(int i= 0;i<convertToNodeList.size();i++)
 		{
 			convertToTreeList.add(new ConvertToTree());
-			convertToTreeList.get(convertToTreeList.size()-1).convertToTree(convertToNodeList.get(i).arrayList);
+			convertToTreeList.get(convertToTreeList.size()-1).converToTree(convertToNodeList.get(i).arrayList);
+			convertToTreeList.get(convertToTreeList.size()-1).changeToConjunctionFunction();
 			convertToTreeList.get(convertToTreeList.size()-1).printTree(null);
 			System.out.println();
 			
@@ -43,7 +44,8 @@ public class MainFile
 	
 	public static void main(String[] args) throws IOException
 	{
-		String fileName = "kb.txt";
+		String fileName = "kbTest.txt";
+		//String fileName = "kb.txt";
 		MainFile mainFile = new MainFile();
 		mainFile.convertToList(fileName);
 		mainFile.convertToTree();

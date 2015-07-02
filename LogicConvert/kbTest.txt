@@ -1,1 +1,1 @@
-(=> exam (NOT (OR tv party)))
+OR OR AND A B AND A1 B1 OR AND A2 B2 AND A3 B3
