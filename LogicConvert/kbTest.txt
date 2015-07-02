@@ -1,0 +1,1 @@
+(=> exam (NOT (OR tv party)))
