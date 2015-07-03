@@ -288,7 +288,7 @@ public class ConvertToTree
 				entity = current.left;
 			}
 			
-			
+			TreeNode copyEntity = copyNode(entity);
 			//更新father节点
 			if(father == null)
 				root = tmp;
@@ -310,7 +310,7 @@ public class ConvertToTree
 			
 			//更新orBnode节点
 			orBNode.left = NodeB;
-			orBNode.right = entity;
+			orBNode.right = copyEntity;
 			
 			if(tmp.left !=null)
 				change2(tmp, tmp.left, 1);
@@ -318,7 +318,6 @@ public class ConvertToTree
 				change2(tmp, tmp.right, 2);
 		}	
 	}
-
 }
 
 

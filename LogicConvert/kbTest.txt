@@ -1,1 +1,5 @@
-OR OR AND A B AND A1 B1 OR AND A2 B2 AND A3 B3
+(=> W H)
+(=> C H)
+(NOT H)
+(OR (AND A B) (AND A C))
+(<=> A D)

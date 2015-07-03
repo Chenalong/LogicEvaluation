@@ -38,6 +38,16 @@ public class ConvertToNodeList
 	public static int mapMaxIndex = 1;
 	public ArrayList<nodeClass> arrayList = new ArrayList<nodeClass>();
 	
+	public static int MaxIndexForMap()
+	{
+		int Max = 0;
+		for(int tmp:map.values())
+		{
+			if(Max < tmp)
+				Max = tmp;
+		}
+		return Max;
+	}
 	public ConvertToNodeList()
 	{
 		logicMap.put("AND", 1);	logicMap.put("OR", 2);
