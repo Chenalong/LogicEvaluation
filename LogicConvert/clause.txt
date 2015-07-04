@@ -1,0 +1,3 @@
+NOT (AND (NOT C) (NOT W))
+NOT (=> B H)
+NOT (A)

@@ -40,7 +40,7 @@ public class MainFile
 			convertToTreeList.get(convertToTreeList.size()-1).converToTree(convertToNodeList.get(i).arrayList);
 			convertToTreeList.get(convertToTreeList.size()-1).changeToConjunctionFunction();
 			convertToTreeList.get(convertToTreeList.size()-1).printTree(null);
-			System.out.println("------------");
+			System.out.println("");
 			//clauseList.add(new Clause());
 			//clauseList.get(clauseList.size()-1).fromTreeToClause(convertToTreeList.get(convertToTreeList.size()-1).root);
 		}
@@ -52,7 +52,7 @@ public class MainFile
 		{
 			clauseList.add(new Clause());
 			clauseList.get(clauseList.size()-1).fromTreeToClause(tmp.root);
-		
+			//clauseList.get(clauseList.size()-1).deleteSameAtom();
 		}
 	}
 	//VALID、SATISFIABLE和UNSATISFIABLE
@@ -79,23 +79,51 @@ public class MainFile
 				SATISFIABLE = true;
 		}
 		if(VALID)
-			System.out.println("---------- The KB is VALID");
+			System.out.println("The KB is VALID");
 		else if(SATISFIABLE)
-			System.out.println("-----------The KB is SATISFIABLE");
+			System.out.println("The KB is SATISFIABLE");
 		else 
-			System.out.println("-----------The KB is UNSATISFIABLE");
+			System.out.println("The KB is UNSATISFIABLE");
 			
+	}
+	
+	public void PrintClause()
+	{
+		for (Clause clause : clauseList)
+		{
+			clause.printClause();
+		}
 	}
 	public static void main(String[] args) throws IOException
 	{
-		String fileName = "kbTest.txt";
-//		String fileName = "kb.txt";
-		MainFile mainFile = new MainFile();
-		mainFile.convertToList(fileName);
-		mainFile.convertToTree();
-		mainFile.convertToClause();
-		System.out.printf("the clause num is %d\n", mainFile.clauseList.get(0).clause.size());
-		mainFile.JudgeType();
-		System.out.println("it is sucessful");
+		
+		//对于知识库的处理
+//		String KBFileName = "kbTest.txt";
+		String KBFileName = "kb.txt";
+		MainFile KBMainFile = new MainFile();
+		KBMainFile.convertToList(KBFileName);
+		KBMainFile.convertToTree();
+		KBMainFile.convertToClause();
+		//System.out.printf("the clause num is %d\n", KBMainFile.clauseList.get(0).clause.size());
+		KBMainFile.JudgeType();
+		KBMainFile.PrintClause();
+		System.out.println("KB it is sucessful");
+		
+		//对于知识库的处理
+		String ClauseFileName = "clause.txt";
+//		String ClauseFileName = "testClause.txt";
+		MainFile ClauseMainFile = new MainFile();
+		ClauseMainFile.convertToList(ClauseFileName);
+		ClauseMainFile.convertToTree();
+		ClauseMainFile.convertToClause();
+		//System.out.printf("the clause num is %d\n", KBMainFile.clauseList.get(0).clause.size());
+		ClauseMainFile.JudgeType();
+		ClauseMainFile.PrintClause();
+		System.out.println("Clause it is sucessful");
+		
+		JudgeClause judgeClause = new JudgeClause(KBMainFile.clauseList, ClauseMainFile.clauseList);
+		
+		judgeClause.judge();
+		
 	}
 }

@@ -25,6 +25,7 @@ public class ConvertToTree
 	boolean isTrue = true;
 	public TreeNode root = null;
 	public int cnt = 0;
+	
 	//前缀表达式生成子句数递归的写法
 	public TreeNode dfs()
 	{
@@ -318,6 +319,7 @@ public class ConvertToTree
 				change2(tmp, tmp.right, 2);
 		}	
 	}
+	
 }
 
 

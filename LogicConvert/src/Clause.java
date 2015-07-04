@@ -33,6 +33,22 @@ public class Clause
 		}
 	}
 	
+	public void printClause()
+	{
+		for (ArrayList<ConvertToTree.TreeNode> arrayList : clause)
+		{
+			for (ConvertToTree.TreeNode treeNode : arrayList)
+			{
+				String tmp = ConvertToNodeList.fromIndexToString(ConvertToNodeList.map, treeNode.index);
+				if(treeNode.type == 0)
+					System.out.print(tmp + " ");
+				else
+					System.out.print("NOT " + tmp + " ");
+			}
+			System.out.println();
+		}
+		System.out.println("-----------------------------------------------");
+	}
 	public void fromTreeToClause(ConvertToTree.TreeNode root)
 	{
 		//System.out.printf("the type is %d and the index is %d\n", root.type,root.index);
@@ -77,5 +93,29 @@ public class Clause
 				return false;
 		}
 		return true;
+	}
+	
+	public void deleteSameAtom()
+	{
+		for (ArrayList<ConvertToTree.TreeNode> arrayList : clause)
+		{
+			ArrayList<Integer>intArray = new ArrayList<Integer>();
+			for(int i = 1 ;i<arrayList.size();i++)
+			{
+				for(int j = 0;j<i;j++)
+				{
+					if(arrayList.get(i).type == arrayList.get(j).type
+						&& arrayList.get(i).index == arrayList.get(j).index)
+					{
+						intArray.add(i);
+						break;
+					}
+				}
+			}
+			for(int i = 0;i<intArray.size();i++)
+			{
+				arrayList.remove(intArray.get(i)-i);
+			}
+		}
 	}
 }

@@ -1,5 +1,1 @@
-(=> W H)
-(=> C H)
-(NOT H)
-(OR (AND A B) (AND A C))
-(<=> A D)
+A
