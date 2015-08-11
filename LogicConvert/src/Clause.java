@@ -11,6 +11,7 @@ public class Clause
 	public void construcClause(ConvertToTree.TreeNode root,int type)  // 表示是否带NOT
 	{
 		System.out.printf("int the construClause the type is %d and the index is %d\n", root.type,root.index);
+		
 		if(root.type == 2)
 		{
 			root.type = type;
